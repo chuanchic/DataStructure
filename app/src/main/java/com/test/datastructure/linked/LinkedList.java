@@ -181,6 +181,26 @@ public class LinkedList<E> {
         return res.e;
     }
 
+    /**
+     * 移除某个元素
+     */
+    public void removeElement(E e){
+        if(e == null){
+            throw new IllegalArgumentException("Remove failed. Illegal element. ");
+        }
+        Node prev = dummyHead;
+        while (prev != null && prev.next != null){
+            if(prev.next.e.equals(e)){
+                Node res = prev.next;
+                prev.next = res.next;
+                res.next = null;
+                size--;
+            }else{
+                prev = prev.next;
+            }
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
